@@ -25,3 +25,30 @@ func TestGenerateString(t *testing.T) {
         t.Error( "Expected 10, got ", len(v["somekey"]))
     }
 }
+
+func TestRandomInt(t *testing.T){
+    var maxval = 1000
+    for maxval > 1{
+        _ = NewGenerator()
+        var v = RandomInt(maxval)
+        if v > maxval {
+            t.Error("cannot have value bigger than %s ! got %s ",maxval, v)
+        }
+        maxval -= 1
+    }
+}
+
+
+func TestGenerateInt(t *testing.T){
+    g := NewGenerator()
+    var k = "yo"
+    var m = g.GenerateInteger(k)
+    //println(m[k])
+    if m[k] > 1024{
+        t.Error( "should be less than %s but got %s", 1024, m[k])
+    }
+}
+
+
+
+
